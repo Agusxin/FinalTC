@@ -14,8 +14,11 @@ PARENA : '(' ;
 PARENC : ')' ;
 
 INT : 'int' ;
-WHILE : 'while' ;
 DOUBLE : 'double' ;
+VOID : 'void' ;
+FLOAT : 'float' ;
+
+WHILE : 'while' ;
 IIF : 'if' ;
 IFOR : 'for' ;
 
@@ -61,14 +64,16 @@ instruccion : declaracion PYQ
             | iwhile
             | iif
             | ifor
+            | funtion
             ;
 
 verificador : ID | ENTERO ;
 
-/*  INICIO DECLARACION  */
-declaracion :  tipo termino ;
 
-tipo : INT | DOUBLE ;
+/*  INICIO DECLARACION  */
+declaracion :  tipo_de_datos termino ;
+
+tipo_de_datos : INT | DOUBLE | FLOAT ;
 
 termino : ID 
         | asignacion_simple
@@ -120,8 +125,7 @@ factor : ID
 
 /* FIN ASIGNACION */
 
-
-
+/* INICIO ESTRUCTURAS DE CONTROL */
 comp : PARENA verificador comparacion verificador PARENC 
      | verificador comparacion verificador 
      ;
@@ -138,8 +142,20 @@ iwhile : WHILE comp bloque ;
   
 iif : IIF comp bloque  ;
 
-ifor : IFOR (PARENA ( (declaracion | asignacion) PYQ  comp PYQ incremento ) PARENC ) bloque ;
+ifor : IFOR bloque_for bloque ;
 
+/* FIN ESTRUCTURAS DE CONTROL */
+
+tipo_de_funcion : INT | DOUBLE | FLOAT | VOID;
+
+una_o_mas_variables : declaracion una_o_mas_variables
+                    | declaracion
+                    ; 
+
+bloque_entre_parentesis : PARENA una_o_mas_variables PARENC ;
+
+
+funtion : tipo_de_funcion ID bloque_entre_parentesis bloque ;
  
 
 

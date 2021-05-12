@@ -90,13 +90,13 @@ public class programaBaseListener implements programaListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterTipo(programaParser.TipoContext ctx) { }
+	@Override public void enterTipo_de_datos(programaParser.Tipo_de_datosContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitTipo(programaParser.TipoContext ctx) { }
+	@Override public void exitTipo_de_datos(programaParser.Tipo_de_datosContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -325,6 +325,54 @@ public class programaBaseListener implements programaListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitIfor(programaParser.IforContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterTipo_de_funcion(programaParser.Tipo_de_funcionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitTipo_de_funcion(programaParser.Tipo_de_funcionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterUna_o_mas_variables(programaParser.Una_o_mas_variablesContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitUna_o_mas_variables(programaParser.Una_o_mas_variablesContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterBloque_entre_parentesis(programaParser.Bloque_entre_parentesisContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitBloque_entre_parentesis(programaParser.Bloque_entre_parentesisContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterFuntion(programaParser.FuntionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitFuntion(programaParser.FuntionContext ctx) { }
 
 	/**
 	 * {@inheritDoc}

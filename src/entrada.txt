@@ -14,6 +14,14 @@ w = x;
 y = x + 10;
 z = x - 5 + y - f;
 
+
+int search(int table,int size){
+  
+
+
+}
+
+
 if(i != 3){
   j  = 3 - 5 ;
 }

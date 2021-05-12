@@ -70,15 +70,15 @@ public interface programaListener extends ParseTreeListener {
 	 */
 	void exitDeclaracion(programaParser.DeclaracionContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link programaParser#tipo}.
+	 * Enter a parse tree produced by {@link programaParser#tipo_de_datos}.
 	 * @param ctx the parse tree
 	 */
-	void enterTipo(programaParser.TipoContext ctx);
+	void enterTipo_de_datos(programaParser.Tipo_de_datosContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link programaParser#tipo}.
+	 * Exit a parse tree produced by {@link programaParser#tipo_de_datos}.
 	 * @param ctx the parse tree
 	 */
-	void exitTipo(programaParser.TipoContext ctx);
+	void exitTipo_de_datos(programaParser.Tipo_de_datosContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link programaParser#termino}.
 	 * @param ctx the parse tree
@@ -269,4 +269,44 @@ public interface programaListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitIfor(programaParser.IforContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link programaParser#tipo_de_funcion}.
+	 * @param ctx the parse tree
+	 */
+	void enterTipo_de_funcion(programaParser.Tipo_de_funcionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link programaParser#tipo_de_funcion}.
+	 * @param ctx the parse tree
+	 */
+	void exitTipo_de_funcion(programaParser.Tipo_de_funcionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link programaParser#una_o_mas_variables}.
+	 * @param ctx the parse tree
+	 */
+	void enterUna_o_mas_variables(programaParser.Una_o_mas_variablesContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link programaParser#una_o_mas_variables}.
+	 * @param ctx the parse tree
+	 */
+	void exitUna_o_mas_variables(programaParser.Una_o_mas_variablesContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link programaParser#bloque_entre_parentesis}.
+	 * @param ctx the parse tree
+	 */
+	void enterBloque_entre_parentesis(programaParser.Bloque_entre_parentesisContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link programaParser#bloque_entre_parentesis}.
+	 * @param ctx the parse tree
+	 */
+	void exitBloque_entre_parentesis(programaParser.Bloque_entre_parentesisContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link programaParser#funtion}.
+	 * @param ctx the parse tree
+	 */
+	void enterFuntion(programaParser.FuntionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link programaParser#funtion}.
+	 * @param ctx the parse tree
+	 */
+	void exitFuntion(programaParser.FuntionContext ctx);
 }

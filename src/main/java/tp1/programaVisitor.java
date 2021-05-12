@@ -49,11 +49,11 @@ public interface programaVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitDeclaracion(programaParser.DeclaracionContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link programaParser#tipo}.
+	 * Visit a parse tree produced by {@link programaParser#tipo_de_datos}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitTipo(programaParser.TipoContext ctx);
+	T visitTipo_de_datos(programaParser.Tipo_de_datosContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link programaParser#termino}.
 	 * @param ctx the parse tree
@@ -168,4 +168,28 @@ public interface programaVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitIfor(programaParser.IforContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link programaParser#tipo_de_funcion}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitTipo_de_funcion(programaParser.Tipo_de_funcionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link programaParser#una_o_mas_variables}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitUna_o_mas_variables(programaParser.Una_o_mas_variablesContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link programaParser#bloque_entre_parentesis}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitBloque_entre_parentesis(programaParser.Bloque_entre_parentesisContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link programaParser#funtion}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFuntion(programaParser.FuntionContext ctx);
 }
