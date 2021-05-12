@@ -37,6 +37,12 @@ public interface programaVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitInstruccion(programaParser.InstruccionContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link programaParser#verificador}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitVerificador(programaParser.VerificadorContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link programaParser#declaracion}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
@@ -121,15 +127,45 @@ public interface programaVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitFactor(programaParser.FactorContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link programaParser#iwhile}.
+	 * Visit a parse tree produced by {@link programaParser#comp}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitIwhile(programaParser.IwhileContext ctx);
+	T visitComp(programaParser.CompContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link programaParser#bloque_for}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitBloque_for(programaParser.Bloque_forContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link programaParser#comparacion}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitComparacion(programaParser.ComparacionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link programaParser#incremento}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitIncremento(programaParser.IncrementoContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link programaParser#iwhile}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitIwhile(programaParser.IwhileContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link programaParser#iif}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitIif(programaParser.IifContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link programaParser#ifor}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitIfor(programaParser.IforContext ctx);
 }

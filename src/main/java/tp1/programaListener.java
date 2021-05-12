@@ -50,6 +50,16 @@ public interface programaListener extends ParseTreeListener {
 	 */
 	void exitInstruccion(programaParser.InstruccionContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link programaParser#verificador}.
+	 * @param ctx the parse tree
+	 */
+	void enterVerificador(programaParser.VerificadorContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link programaParser#verificador}.
+	 * @param ctx the parse tree
+	 */
+	void exitVerificador(programaParser.VerificadorContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link programaParser#declaracion}.
 	 * @param ctx the parse tree
 	 */
@@ -190,15 +200,25 @@ public interface programaListener extends ParseTreeListener {
 	 */
 	void exitFactor(programaParser.FactorContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link programaParser#iwhile}.
+	 * Enter a parse tree produced by {@link programaParser#comp}.
 	 * @param ctx the parse tree
 	 */
-	void enterIwhile(programaParser.IwhileContext ctx);
+	void enterComp(programaParser.CompContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link programaParser#iwhile}.
+	 * Exit a parse tree produced by {@link programaParser#comp}.
 	 * @param ctx the parse tree
 	 */
-	void exitIwhile(programaParser.IwhileContext ctx);
+	void exitComp(programaParser.CompContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link programaParser#bloque_for}.
+	 * @param ctx the parse tree
+	 */
+	void enterBloque_for(programaParser.Bloque_forContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link programaParser#bloque_for}.
+	 * @param ctx the parse tree
+	 */
+	void exitBloque_for(programaParser.Bloque_forContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link programaParser#comparacion}.
 	 * @param ctx the parse tree
@@ -209,4 +229,44 @@ public interface programaListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitComparacion(programaParser.ComparacionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link programaParser#incremento}.
+	 * @param ctx the parse tree
+	 */
+	void enterIncremento(programaParser.IncrementoContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link programaParser#incremento}.
+	 * @param ctx the parse tree
+	 */
+	void exitIncremento(programaParser.IncrementoContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link programaParser#iwhile}.
+	 * @param ctx the parse tree
+	 */
+	void enterIwhile(programaParser.IwhileContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link programaParser#iwhile}.
+	 * @param ctx the parse tree
+	 */
+	void exitIwhile(programaParser.IwhileContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link programaParser#iif}.
+	 * @param ctx the parse tree
+	 */
+	void enterIif(programaParser.IifContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link programaParser#iif}.
+	 * @param ctx the parse tree
+	 */
+	void exitIif(programaParser.IifContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link programaParser#ifor}.
+	 * @param ctx the parse tree
+	 */
+	void enterIfor(programaParser.IforContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link programaParser#ifor}.
+	 * @param ctx the parse tree
+	 */
+	void exitIfor(programaParser.IforContext ctx);
 }

@@ -16,6 +16,8 @@ PARENC : ')' ;
 INT : 'int' ;
 WHILE : 'while' ;
 DOUBLE : 'double' ;
+IIF : 'if' ;
+IFOR : 'for' ;
 
 MAS : '+' ;
 MENOS : '-' ;
@@ -57,8 +59,11 @@ bloque : LLAVEA instrucciones LLAVEC ;
 instruccion : declaracion PYQ
             | asignacion PYQ
             | iwhile
+            | iif
+            | ifor
             ;
 
+verificador : ID | ENTERO ;
 
 /*  INICIO DECLARACION  */
 declaracion :  tipo termino ;
@@ -71,7 +76,7 @@ termino : ID
         |
         ;
 
-asignacion_simple : ID ASIG (ID | ENTERO) asignacion_simple 
+asignacion_simple : ID ASIG verificador asignacion_simple 
                   | entrada_al_reves  asignacion_simple
                   | 
                   ;
@@ -113,14 +118,29 @@ factor : ID
        | PARENA exp PARENC
        ;
 
-
 /* FIN ASIGNACION */
 
 
-/* INICIO IWHILE */
 
-iwhile : WHILE (PARENA (ID | ENTERO) comparacion (ENTERO | ID) PARENC) bloque ;
+comp : PARENA verificador comparacion verificador PARENC 
+     | verificador comparacion verificador 
+     ;
+
+bloque_for : PARENA ( (declaracion | asignacion) PYQ comp PYQ incremento ) PARENC ;
 
 comparacion : MAYOR | MENOR | MAYORIGUAL | MENORIGUAL | IGUALES | DISTINTO ;
 
-/* FIN IWHILE */
+incremento : verificador MAS MAS 
+           | verificador MENOS MENOS
+           ;
+
+iwhile : WHILE comp bloque ;
+  
+iif : IIF comp bloque  ;
+
+ifor : IFOR (PARENA ( (declaracion | asignacion) PYQ  comp PYQ incremento ) PARENC ) bloque ;
+
+ 
+
+
+
