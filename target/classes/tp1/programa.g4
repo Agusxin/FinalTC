@@ -26,15 +26,22 @@ MAS : '+' ;
 MENOS : '-' ;
 MULT: '*' ;
 DIV : '/' ;
+
+
 MENOR : '<' ; 
 MAYOR : '>' ;
 MENORIGUAL : '<=' ;
 MAYORIGUAL : '>=' ;
 IGUALES: '==' ;
 DISTINTO : '!=' ;
+
+
 ASIG : '=' ;
 PYQ : ';' ;
 COMA : ',' ;
+
+OR : '||' ;
+AND : '&&' ;
 
 
 ENTERO : DIGITO+ ;
@@ -128,6 +135,25 @@ factor : ID
 /* FIN ASIGNACION */
 
 /* INICIO ESTRUCTURAS DE CONTROL */
+
+
+bloque_estructuras_de_control : verificador comparacion verificador bloque_estructuras_de_control
+                              | PARENA comp2 comparacion verificador  bloque_estructuras_de_control
+                              | PARENA comp2 bloque_estructuras_de_control
+                              | PARENC comparacion verificador
+                              | PARENC logico_comp bloque_estructuras_de_control
+                              | PARENC
+                              | logico_comp bloque_estructuras_de_control
+                              |
+                              ; 
+
+
+comp2 : verificador logico_comp comp2 
+      | verificador
+      ;
+
+logico_comp : OR | AND ;
+
 comp : PARENA verificador comparacion verificador PARENC 
      | verificador comparacion verificador 
      ;
@@ -140,9 +166,9 @@ incremento : verificador MAS MAS
            | verificador MENOS MENOS
            ;
 
-iwhile : WHILE comp bloque ;
+iwhile : WHILE PARENA bloque_estructuras_de_control PARENC bloque ;
   
-iif : IIF comp bloque  ;
+iif : IIF PARENA bloque_estructuras_de_control  PARENC bloque  ;
 
 ifor : IFOR bloque_for bloque ;
 
@@ -157,9 +183,13 @@ una_o_mas_variables : declaracion una_o_mas_variables
 
 bloque_entre_parentesis : PARENA una_o_mas_variables PARENC ;
 
-bloque_de_funtion : tipo_de_funcion ID bloque_entre_parentesis ;
+bloque_de_funtion : tipo_de_funcion ID bloque_entre_parentesis 
+                  |
+                  ;
 
-funtion : bloque_de_funtion  bloque  ;
+funtion : bloque_de_funtion  bloque  
+        | bloque_de_funtion PYQ 
+        ;
 
 llamada_funtion : ID PARENA varias PARENC PYQ  ;
 

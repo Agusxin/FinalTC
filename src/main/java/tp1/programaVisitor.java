@@ -127,17 +127,11 @@ public interface programaVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitFactor(programaParser.FactorContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link programaParser#comp}.
+	 * Visit a parse tree produced by {@link programaParser#logico_comp}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitComp(programaParser.CompContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link programaParser#bloque_for}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitBloque_for(programaParser.Bloque_forContext ctx);
+	T visitLogico_comp(programaParser.Logico_compContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link programaParser#comparacion}.
 	 * @param ctx the parse tree
@@ -145,11 +139,29 @@ public interface programaVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitComparacion(programaParser.ComparacionContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link programaParser#comp}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitComp(programaParser.CompContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link programaParser#bloque_estructuras_de_control}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitBloque_estructuras_de_control(programaParser.Bloque_estructuras_de_controlContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link programaParser#incremento}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitIncremento(programaParser.IncrementoContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link programaParser#bloque_for}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitBloque_for(programaParser.Bloque_forContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link programaParser#iwhile}.
 	 * @param ctx the parse tree

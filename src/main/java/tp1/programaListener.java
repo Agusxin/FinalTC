@@ -200,25 +200,15 @@ public interface programaListener extends ParseTreeListener {
 	 */
 	void exitFactor(programaParser.FactorContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link programaParser#comp}.
+	 * Enter a parse tree produced by {@link programaParser#logico_comp}.
 	 * @param ctx the parse tree
 	 */
-	void enterComp(programaParser.CompContext ctx);
+	void enterLogico_comp(programaParser.Logico_compContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link programaParser#comp}.
+	 * Exit a parse tree produced by {@link programaParser#logico_comp}.
 	 * @param ctx the parse tree
 	 */
-	void exitComp(programaParser.CompContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link programaParser#bloque_for}.
-	 * @param ctx the parse tree
-	 */
-	void enterBloque_for(programaParser.Bloque_forContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link programaParser#bloque_for}.
-	 * @param ctx the parse tree
-	 */
-	void exitBloque_for(programaParser.Bloque_forContext ctx);
+	void exitLogico_comp(programaParser.Logico_compContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link programaParser#comparacion}.
 	 * @param ctx the parse tree
@@ -230,6 +220,26 @@ public interface programaListener extends ParseTreeListener {
 	 */
 	void exitComparacion(programaParser.ComparacionContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link programaParser#comp}.
+	 * @param ctx the parse tree
+	 */
+	void enterComp(programaParser.CompContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link programaParser#comp}.
+	 * @param ctx the parse tree
+	 */
+	void exitComp(programaParser.CompContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link programaParser#bloque_estructuras_de_control}.
+	 * @param ctx the parse tree
+	 */
+	void enterBloque_estructuras_de_control(programaParser.Bloque_estructuras_de_controlContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link programaParser#bloque_estructuras_de_control}.
+	 * @param ctx the parse tree
+	 */
+	void exitBloque_estructuras_de_control(programaParser.Bloque_estructuras_de_controlContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link programaParser#incremento}.
 	 * @param ctx the parse tree
 	 */
@@ -239,6 +249,16 @@ public interface programaListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitIncremento(programaParser.IncrementoContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link programaParser#bloque_for}.
+	 * @param ctx the parse tree
+	 */
+	void enterBloque_for(programaParser.Bloque_forContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link programaParser#bloque_for}.
+	 * @param ctx the parse tree
+	 */
+	void exitBloque_for(programaParser.Bloque_forContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link programaParser#iwhile}.
 	 * @param ctx the parse tree
