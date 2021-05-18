@@ -300,6 +300,16 @@ public interface programaListener extends ParseTreeListener {
 	 */
 	void exitBloque_entre_parentesis(programaParser.Bloque_entre_parentesisContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link programaParser#bloque_de_funtion}.
+	 * @param ctx the parse tree
+	 */
+	void enterBloque_de_funtion(programaParser.Bloque_de_funtionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link programaParser#bloque_de_funtion}.
+	 * @param ctx the parse tree
+	 */
+	void exitBloque_de_funtion(programaParser.Bloque_de_funtionContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link programaParser#funtion}.
 	 * @param ctx the parse tree
 	 */
@@ -309,4 +319,24 @@ public interface programaListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitFuntion(programaParser.FuntionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link programaParser#llamada_funtion}.
+	 * @param ctx the parse tree
+	 */
+	void enterLlamada_funtion(programaParser.Llamada_funtionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link programaParser#llamada_funtion}.
+	 * @param ctx the parse tree
+	 */
+	void exitLlamada_funtion(programaParser.Llamada_funtionContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link programaParser#finalizar_con_return}.
+	 * @param ctx the parse tree
+	 */
+	void enterFinalizar_con_return(programaParser.Finalizar_con_returnContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link programaParser#finalizar_con_return}.
+	 * @param ctx the parse tree
+	 */
+	void exitFinalizar_con_return(programaParser.Finalizar_con_returnContext ctx);
 }

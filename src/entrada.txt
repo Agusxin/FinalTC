@@ -1,48 +1,19 @@
-int x;
-double y;
-int z = 0;
-double w, q, t;
-int a = 5,b,c = 10;
-
-
-x = 1;
-z = y;
-r = p * q / 2 ;
-e = 5 + 4 * 3 - 2;
-t = 4 * (4 - 1);
-w = x;
-y = x + 10;
-z = x - 5 + y - f;
-
 
 int search(int table,int size){
-  
 
 
+   return 0;
 }
 
+int main(){
 
-if(i != 3){
-  j  = 3 - 5 ;
+ int multiplicador;
+ int multiplicando; 
+ int res; 
+ multiplicador = 1000; 
+ multiplicando = 2;
+ res=multiplicador*multiplicando;
+ search(multiplicador,res);
+
+return 0;
 }
-
-for(int i = 0 ; i < 5 ; i++){
-
-}
-
-
-while (x < 3)
-{
-    int x;
-    x = 1;
-}
-
-while ( y < 6)
-{
-    int j = 4;
-    w = 3;
-}
-
-
-
-

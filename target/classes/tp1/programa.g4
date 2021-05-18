@@ -65,6 +65,8 @@ instruccion : declaracion PYQ
             | iif
             | ifor
             | funtion
+            | llamada_funtion
+            | finalizar_con_return
             ;
 
 verificador : ID | ENTERO ;
@@ -150,12 +152,20 @@ tipo_de_funcion : INT | DOUBLE | FLOAT | VOID;
 
 una_o_mas_variables : declaracion una_o_mas_variables
                     | declaracion
+                    |
                     ; 
 
 bloque_entre_parentesis : PARENA una_o_mas_variables PARENC ;
 
+bloque_de_funtion : tipo_de_funcion ID bloque_entre_parentesis ;
 
-funtion : tipo_de_funcion ID bloque_entre_parentesis bloque ;
+funtion : bloque_de_funtion  bloque  ;
+
+llamada_funtion : ID PARENA varias PARENC PYQ  ;
+
+
+
+finalizar_con_return : ID ENTERO PYQ ;
  
 
 

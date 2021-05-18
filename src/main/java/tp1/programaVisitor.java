@@ -187,9 +187,27 @@ public interface programaVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitBloque_entre_parentesis(programaParser.Bloque_entre_parentesisContext ctx);
 	/**
+	 * Visit a parse tree produced by {@link programaParser#bloque_de_funtion}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitBloque_de_funtion(programaParser.Bloque_de_funtionContext ctx);
+	/**
 	 * Visit a parse tree produced by {@link programaParser#funtion}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitFuntion(programaParser.FuntionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link programaParser#llamada_funtion}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitLlamada_funtion(programaParser.Llamada_funtionContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link programaParser#finalizar_con_return}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFinalizar_con_return(programaParser.Finalizar_con_returnContext ctx);
 }
