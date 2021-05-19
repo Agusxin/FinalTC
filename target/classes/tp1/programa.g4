@@ -49,7 +49,6 @@ ENTERO : DIGITO+ ;
 ID : (LETRA | '_')(LETRA | DIGITO | '_')* ;
 
 
-
 WS : [ \n\t\r]+ -> skip;
 
 
@@ -83,6 +82,7 @@ verificador : ID | ENTERO ;
 declaracion :  tipo_de_datos termino ;
 
 tipo_de_datos : INT | DOUBLE | FLOAT ;
+
 
 termino : ID 
         | asignacion_simple
@@ -134,66 +134,75 @@ factor : ID
 
 /* FIN ASIGNACION */
 
+
 /* INICIO ESTRUCTURAS DE CONTROL */
 
+logico_comp : OR | AND ;
+
+comparacion : MAYOR | MENOR | MAYORIGUAL | MENORIGUAL | IGUALES | DISTINTO ;
+
+comp : verificador logico_comp comp
+     | verificador
+     ;
 
 bloque_estructuras_de_control : verificador comparacion verificador bloque_estructuras_de_control
-                              | PARENA comp2 comparacion verificador  bloque_estructuras_de_control
-                              | PARENA comp2 bloque_estructuras_de_control
-                              | PARENC comparacion verificador
+                              | PARENA comp comparacion verificador  bloque_estructuras_de_control
+                              | PARENA comp bloque_estructuras_de_control
+                              | PARENC comparacion verificador bloque_estructuras_de_control
                               | PARENC logico_comp bloque_estructuras_de_control
                               | PARENC
                               | logico_comp bloque_estructuras_de_control
                               |
                               ; 
 
+pos_pre_incremento : verificador MAS MAS 
+                   | verificador MENOS MENOS
+                   | MAS MAS verificador
+                   | MENOS MENOS verificador
+                   ;
 
-comp2 : verificador logico_comp comp2 
-      | verificador
-      ;
 
-logico_comp : OR | AND ;
+bloque_for : PARENA ( (declaracion | asignacion) PYQ bloque_estructuras_de_control  PYQ pos_pre_incremento ) PARENC ;
 
-comp : PARENA verificador comparacion verificador PARENC 
-     | verificador comparacion verificador 
-     ;
-
-bloque_for : PARENA ( (declaracion | asignacion) PYQ comp PYQ incremento ) PARENC ;
-
-comparacion : MAYOR | MENOR | MAYORIGUAL | MENORIGUAL | IGUALES | DISTINTO ;
-
-incremento : verificador MAS MAS 
-           | verificador MENOS MENOS
-           ;
 
 iwhile : WHILE PARENA bloque_estructuras_de_control PARENC bloque ;
   
+
 iif : IIF PARENA bloque_estructuras_de_control  PARENC bloque  ;
+
 
 ifor : IFOR bloque_for bloque ;
 
 /* FIN ESTRUCTURAS DE CONTROL */
 
+
+/* INICIO ACEPTAR FUNCIONES Y LLAMADAS DE FUNCIONES */
+
 tipo_de_funcion : INT | DOUBLE | FLOAT | VOID;
+
 
 una_o_mas_variables : declaracion una_o_mas_variables
                     | declaracion
                     |
                     ; 
 
+
 bloque_entre_parentesis : PARENA una_o_mas_variables PARENC ;
+
 
 bloque_de_funtion : tipo_de_funcion ID bloque_entre_parentesis 
                   |
                   ;
 
+
 funtion : bloque_de_funtion  bloque  
         | bloque_de_funtion PYQ 
         ;
 
+
 llamada_funtion : ID PARENA varias PARENC PYQ  ;
 
-
+/* FIN ACEPTAR FUNCIONES Y LLAMADAS DE FUNCIONES */
 
 finalizar_con_return : ID ENTERO PYQ ;
  

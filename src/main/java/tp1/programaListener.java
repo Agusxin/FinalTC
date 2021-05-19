@@ -1,4 +1,4 @@
-// Generated from /mnt/c/users/agux/desktop/Archivos Adicionales/Universidad/9no Cuatrimestre/Tecnicas de Compilacion/tp1/src/main/java/tp1/programa.g4 by ANTLR 4.8
+// Generated from /mnt/c/users/agux/desktop/archivos adicionales/Universidad/9no Cuatrimestre/Tecnicas de Compilacion/tp1/src/main/java/tp1/programa.g4 by ANTLR 4.8
 
 package tp1;
 
@@ -240,15 +240,15 @@ public interface programaListener extends ParseTreeListener {
 	 */
 	void exitBloque_estructuras_de_control(programaParser.Bloque_estructuras_de_controlContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link programaParser#incremento}.
+	 * Enter a parse tree produced by {@link programaParser#pos_pre_incremento}.
 	 * @param ctx the parse tree
 	 */
-	void enterIncremento(programaParser.IncrementoContext ctx);
+	void enterPos_pre_incremento(programaParser.Pos_pre_incrementoContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link programaParser#incremento}.
+	 * Exit a parse tree produced by {@link programaParser#pos_pre_incremento}.
 	 * @param ctx the parse tree
 	 */
-	void exitIncremento(programaParser.IncrementoContext ctx);
+	void exitPos_pre_incremento(programaParser.Pos_pre_incrementoContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link programaParser#bloque_for}.
 	 * @param ctx the parse tree

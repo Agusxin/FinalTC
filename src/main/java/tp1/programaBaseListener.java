@@ -1,4 +1,4 @@
-// Generated from /mnt/c/users/agux/desktop/Archivos Adicionales/Universidad/9no Cuatrimestre/Tecnicas de Compilacion/tp1/src/main/java/tp1/programa.g4 by ANTLR 4.8
+// Generated from /mnt/c/users/agux/desktop/archivos adicionales/Universidad/9no Cuatrimestre/Tecnicas de Compilacion/tp1/src/main/java/tp1/programa.g4 by ANTLR 4.8
 
 package tp1;
 
@@ -294,13 +294,13 @@ public class programaBaseListener implements programaListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterIncremento(programaParser.IncrementoContext ctx) { }
+	@Override public void enterPos_pre_incremento(programaParser.Pos_pre_incrementoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitIncremento(programaParser.IncrementoContext ctx) { }
+	@Override public void exitPos_pre_incremento(programaParser.Pos_pre_incrementoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

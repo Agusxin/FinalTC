@@ -49,7 +49,6 @@ ENTERO : DIGITO+ ;
 ID : (LETRA | '_')(LETRA | DIGITO | '_')* ;
 
 
-
 WS : [ \n\t\r]+ -> skip;
 
 
@@ -83,6 +82,7 @@ verificador : ID | ENTERO ;
 declaracion :  tipo_de_datos termino ;
 
 tipo_de_datos : INT | DOUBLE | FLOAT ;
+
 
 termino : ID 
         | asignacion_simple
@@ -142,25 +142,27 @@ logico_comp : OR | AND ;
 comparacion : MAYOR | MENOR | MAYORIGUAL | MENORIGUAL | IGUALES | DISTINTO ;
 
 comp : verificador logico_comp comp
-      | verificador
-      ;
+     | verificador
+     ;
 
 bloque_estructuras_de_control : verificador comparacion verificador bloque_estructuras_de_control
                               | PARENA comp comparacion verificador  bloque_estructuras_de_control
                               | PARENA comp bloque_estructuras_de_control
-                              | PARENC comparacion verificador
+                              | PARENC comparacion verificador bloque_estructuras_de_control
                               | PARENC logico_comp bloque_estructuras_de_control
                               | PARENC
                               | logico_comp bloque_estructuras_de_control
                               |
                               ; 
 
-incremento : verificador MAS MAS 
-           | verificador MENOS MENOS
-           ;
+pos_pre_incremento : verificador MAS MAS 
+                   | verificador MENOS MENOS
+                   | MAS MAS verificador
+                   | MENOS MENOS verificador
+                   ;
 
 
-bloque_for : PARENA ( (declaracion | asignacion) PYQ bloque_estructuras_de_control  PYQ incremento ) PARENC ;
+bloque_for : PARENA ( (declaracion | asignacion) PYQ bloque_estructuras_de_control  PYQ pos_pre_incremento ) PARENC ;
 
 
 iwhile : WHILE PARENA bloque_estructuras_de_control PARENC bloque ;
