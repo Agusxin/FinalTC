@@ -1,4 +1,4 @@
-// Generated from c:\Users\Agux\Desktop\Archivos Adicionales\Universidad\9no Cuatrimestre\Tecnicas de Compilacion\tp1\src\main\java\tp1\programa.g4 by ANTLR 4.8
+// Generated from /mnt/c/users/agux/desktop/Archivos Adicionales/Universidad/9no Cuatrimestre/Tecnicas de Compilacion/tp1/src/main/java/tp1/programa.g4 by ANTLR 4.8
 
 package tp1;
 
@@ -39,6 +39,16 @@ public interface programaListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitBloque(programaParser.BloqueContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link programaParser#puntocoma}.
+	 * @param ctx the parse tree
+	 */
+	void enterPuntocoma(programaParser.PuntocomaContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link programaParser#puntocoma}.
+	 * @param ctx the parse tree
+	 */
+	void exitPuntocoma(programaParser.PuntocomaContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link programaParser#instruccion}.
 	 * @param ctx the parse tree

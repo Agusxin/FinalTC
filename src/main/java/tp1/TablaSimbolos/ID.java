@@ -12,8 +12,10 @@ public class ID {
     public ID(String nombre, String tipo) {
         this.nombre_token = nombre;
         this.tipo_Dato = tipo;
-        this.usada = true;
+        this.usada = false;
     }
+
+   
 
     public String getNombre() {
         return this.nombre_token;

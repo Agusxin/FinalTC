@@ -66,17 +66,17 @@ instrucciones :  instruccion instrucciones
 
 bloque : LLAVEA instrucciones LLAVEC ;
 
+puntocoma: PYQ;
 
-
-instruccion : declaracion PYQ
-            | asignacion PYQ
+instruccion : declaracion puntocoma
+            | asignacion puntocoma
             | iwhile
             | iif
             | ifor
-            | funcion PYQ
-            | declaracion_funcion PYQ
+            | funcion puntocoma
+            | declaracion_funcion puntocoma
             | definicion_funcion
-            | finalizar_con_return PYQ
+            | finalizar_con_return puntocoma
             ;
 
 verificador : ID | ENTERO ;
@@ -160,7 +160,7 @@ pos_pre_incremento : verificador MAS MAS
                    ;
 
 
-bloque_for : PARENA ( (declaracion | asignacion) PYQ bloque_estructuras_de_control  PYQ pos_pre_incremento ) PARENC ;
+bloque_for : PARENA ( (declaracion | asignacion) puntocoma bloque_estructuras_de_control  puntocoma pos_pre_incremento ) PARENC ;
 
 
 iwhile : WHILE PARENA bloque_estructuras_de_control PARENC bloque ;

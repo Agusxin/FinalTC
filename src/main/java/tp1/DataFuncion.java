@@ -57,10 +57,6 @@ public class DataFuncion {
         if(ruleCtx.getClass().equals( programaParser.Una_o_mas_variablesContext.class)) {
              programaParser.Una_o_mas_variablesContext paramDefCtx = ( programaParser.Una_o_mas_variablesContext) ruleCtx;
             
-            // si no tiene parametros devuelve lista vacia
-            if (paramDefCtx == null){
-                return parametros;
-            }
             // si hay al menos 2 parametros en la funcion definida
             if (paramDefCtx.una_o_mas_variables() != null) {
                 ID param = new Variable(paramDefCtx.una_o_mas_variables().declaracion().asignacion_simple().ID().getText(), paramDefCtx.una_o_mas_variables().declaracion().tipo_de_datos().getText());
@@ -93,15 +89,15 @@ public class DataFuncion {
     public static boolean validarFuncion(Funcion funcion,  programaParser.Declaracion_funcionContext ctx) {
       TablaSimbolos tablaSimbolos = TablaSimbolos.getInstance();
         if (tablaSimbolos.getDefFuncion(funcion) != null) {
-            return false;
+            return true;
         }
         if (tablaSimbolos.getContext() != 1) {
-            return false;
+            return true;
         }
         if (tablaSimbolos.isVariableDeclared(funcion)) {
-            return false;
+            return true;
         }
-        return true;
+        return false;
     }
     
 }

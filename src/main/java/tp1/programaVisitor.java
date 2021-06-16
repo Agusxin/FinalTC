@@ -1,4 +1,4 @@
-// Generated from c:\Users\Agux\Desktop\Archivos Adicionales\Universidad\9no Cuatrimestre\Tecnicas de Compilacion\tp1\src\main\java\tp1\programa.g4 by ANTLR 4.8
+// Generated from /mnt/c/users/agux/desktop/Archivos Adicionales/Universidad/9no Cuatrimestre/Tecnicas de Compilacion/tp1/src/main/java/tp1/programa.g4 by ANTLR 4.8
 
 package tp1;
 
@@ -30,6 +30,12 @@ public interface programaVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitBloque(programaParser.BloqueContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link programaParser#puntocoma}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitPuntocoma(programaParser.PuntocomaContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link programaParser#instruccion}.
 	 * @param ctx the parse tree

@@ -60,7 +60,8 @@ public class miListener extends programaBaseListener {
     }
 
 
-    @Override public void exitAsignacion( programaParser.AsignacionContext ctx){
+    @Override
+         public void exitAsignacion( programaParser.AsignacionContext ctx){
         ID variable = this.simbolTable.searchVariable(ctx.ID().getText());
         int linea = ctx.getStart().getLine(); // el numero de linea es para el parser error
 
@@ -87,10 +88,11 @@ public class miListener extends programaBaseListener {
         }
         else if (this.simbolTable.isVariableDeclared(ctx.ID().getText())) {
             this.simbolTable.setUsedId(ctx.ID().getText());
+            
         }
         else {
             //Variable no declarada
-            ErrorListener.printError(ctx.getStop().getLine(), " Duplicado --> "+ ctx.ID().getText() +" no esta declarado");
+            ErrorListener.printError(ctx.getStop().getLine(), " La variables --> "+ ctx.ID().getText() +" no esta declarado");
         }
     }
   
@@ -156,6 +158,16 @@ public class miListener extends programaBaseListener {
                     ErrorListener.printError(ctx.getStop().getLine(), "Debe retornar un valor");
                     return ;   
                 }
+            }
+        }
+    }
+
+
+    @Override
+    public void exitPuntocoma(programaParser.PuntocomaContext ctx) {
+        if (ctx.PYQ() != null) {
+            if (!ctx.PYQ().getText().equals(";")) {
+                ErrorListener.printError(ctx.getStop().getLine(),"Falta punto y coma");
             }
         }
     }
