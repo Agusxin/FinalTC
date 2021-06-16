@@ -1,4 +1,4 @@
-// Generated from /mnt/c/users/agux/desktop/archivos adicionales/Universidad/9no Cuatrimestre/Tecnicas de Compilacion/tp1/src/main/java/tp1/programa.g4 by ANTLR 4.8
+// Generated from c:\Users\Agux\Desktop\Archivos Adicionales\Universidad\9no Cuatrimestre\Tecnicas de Compilacion\tp1\src\main\java\tp1\programa.g4 by ANTLR 4.8
 
 package tp1;
 
@@ -102,18 +102,6 @@ public class programaBaseListener implements programaListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterTermino(programaParser.TerminoContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitTermino(programaParser.TerminoContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterAsignacion_simple(programaParser.Asignacion_simpleContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -121,42 +109,6 @@ public class programaBaseListener implements programaListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitAsignacion_simple(programaParser.Asignacion_simpleContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterEntrada_al_reves(programaParser.Entrada_al_revesContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitEntrada_al_reves(programaParser.Entrada_al_revesContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterVarias_variables(programaParser.Varias_variablesContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitVarias_variables(programaParser.Varias_variablesContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterVarias(programaParser.VariasContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitVarias(programaParser.VariasContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -354,18 +306,6 @@ public class programaBaseListener implements programaListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterTipo_de_funcion(programaParser.Tipo_de_funcionContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitTipo_de_funcion(programaParser.Tipo_de_funcionContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterUna_o_mas_variables(programaParser.Una_o_mas_variablesContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -378,49 +318,73 @@ public class programaBaseListener implements programaListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterBloque_entre_parentesis(programaParser.Bloque_entre_parentesisContext ctx) { }
+	@Override public void enterTipo_de_funcion(programaParser.Tipo_de_funcionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitBloque_entre_parentesis(programaParser.Bloque_entre_parentesisContext ctx) { }
+	@Override public void exitTipo_de_funcion(programaParser.Tipo_de_funcionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterBloque_de_funtion(programaParser.Bloque_de_funtionContext ctx) { }
+	@Override public void enterFuncion(programaParser.FuncionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitBloque_de_funtion(programaParser.Bloque_de_funtionContext ctx) { }
+	@Override public void exitFuncion(programaParser.FuncionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterFuntion(programaParser.FuntionContext ctx) { }
+	@Override public void enterDeclaracion_funcion(programaParser.Declaracion_funcionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitFuntion(programaParser.FuntionContext ctx) { }
+	@Override public void exitDeclaracion_funcion(programaParser.Declaracion_funcionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterLlamada_funtion(programaParser.Llamada_funtionContext ctx) { }
+	@Override public void enterDefinicion_funcion(programaParser.Definicion_funcionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitLlamada_funtion(programaParser.Llamada_funtionContext ctx) { }
+	@Override public void exitDefinicion_funcion(programaParser.Definicion_funcionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterParam_declaracion(programaParser.Param_declaracionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitParam_declaracion(programaParser.Param_declaracionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterParam_definicion(programaParser.Param_definicionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitParam_definicion(programaParser.Param_definicionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

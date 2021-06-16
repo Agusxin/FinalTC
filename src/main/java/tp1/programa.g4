@@ -13,6 +13,8 @@ LLAVEC : '}' ;
 PARENA : '(' ;
 PARENC : ')' ;
 
+
+
 INT : 'int' ;
 DOUBLE : 'double' ;
 VOID : 'void' ;
@@ -43,6 +45,7 @@ COMA : ',' ;
 OR : '||' ;
 AND : '&&' ;
 
+RETURN : 'return' ;
 
 ENTERO : DIGITO+ ;
 
@@ -52,11 +55,11 @@ ID : (LETRA | '_')(LETRA | DIGITO | '_')* ;
 WS : [ \n\t\r]+ -> skip;
 
 
-programa : { System.out.println("\n\n -->Inicio para ver si marca un error en token<--"); } instrucciones{ System.out.println("\n\n -->Fin...si hay error marcara el token de error, si no, se observa con el parser tree que no hay error<--"); } ;
+programa :  instrucciones;
 
 
 instrucciones :  instruccion instrucciones
-              | bloque instrucciones
+              |  bloque instrucciones
               |
               ;
 
@@ -70,41 +73,28 @@ instruccion : declaracion PYQ
             | iwhile
             | iif
             | ifor
-            | funtion
-            | llamada_funtion
-            | finalizar_con_return
+            | funcion PYQ
+            | declaracion_funcion PYQ
+            | definicion_funcion
+            | finalizar_con_return PYQ
             ;
 
 verificador : ID | ENTERO ;
 
 
 /*  INICIO DECLARACION  */
-declaracion :  tipo_de_datos termino ;
+declaracion :  tipo_de_datos asignacion_simple;
 
-tipo_de_datos : INT | DOUBLE | FLOAT ;
+tipo_de_datos : INT 
+              | DOUBLE 
+              | FLOAT
+              ;
 
-
-termino : ID 
-        | asignacion_simple
-        | varias_variables
-        |
-        ;
-
-asignacion_simple : ID ASIG verificador asignacion_simple 
-                  | entrada_al_reves  asignacion_simple
-                  | 
+asignacion_simple : ID ASIG verificador
+                  | ID ASIG COMA asignacion_simple
+                  | ID
+                  | ID COMA asignacion_simple
                   ;
-
-entrada_al_reves : COMA ID entrada_al_reves
-                 | COMA 
-                 ; 
-
-varias_variables : varias ;
-
-varias : ID COMA varias
-       | ID 
-       |
-       ;
 
 /* FIN DECLARACION */
 
@@ -137,9 +127,17 @@ factor : ID
 
 /* INICIO ESTRUCTURAS DE CONTROL */
 
-logico_comp : OR | AND ;
+logico_comp : OR 
+            | AND
+            ;
 
-comparacion : MAYOR | MENOR | MAYORIGUAL | MENORIGUAL | IGUALES | DISTINTO ;
+comparacion : MAYOR
+            | MENOR 
+            | MAYORIGUAL 
+            | MENORIGUAL 
+            | IGUALES 
+            | DISTINTO 
+            ;
 
 comp : verificador logico_comp comp
      | verificador
@@ -178,34 +176,34 @@ ifor : IFOR bloque_for bloque ;
 
 /* INICIO ACEPTAR FUNCIONES Y LLAMADAS DE FUNCIONES */
 
-tipo_de_funcion : INT | DOUBLE | FLOAT | VOID;
-
 
 una_o_mas_variables : declaracion una_o_mas_variables
                     | declaracion
                     |
                     ; 
 
+tipo_de_funcion : VOID ;
 
-bloque_entre_parentesis : PARENA una_o_mas_variables PARENC ;
-
-
-bloque_de_funtion : tipo_de_funcion ID bloque_entre_parentesis 
-                  |
-                  ;
-
-
-funtion : bloque_de_funtion  bloque  
-        | bloque_de_funtion PYQ 
+funcion : tipo_de_datos ID PARENA una_o_mas_variables PARENC
+        | ID PARENA PARENC
         ;
 
 
-llamada_funtion : ID PARENA varias PARENC PYQ  ;
+declaracion_funcion : tipo_de_datos ID PARENA param_declaracion PARENC;
+                    
+definicion_funcion: tipo_de_datos ID PARENA param_definicion PARENC bloque;
+
+param_declaracion : tipo_de_datos(ID | )
+		              | tipo_de_datos (ID | ) COMA param_declaracion
+                  |
+		              ;
+
+param_definicion : tipo_de_datos ID
+		             | tipo_de_datos ID COMA param_definicion
+                 |
+	            	 ; 
 
 /* FIN ACEPTAR FUNCIONES Y LLAMADAS DE FUNCIONES */
 
-finalizar_con_return : ID ENTERO PYQ ;
+finalizar_con_return : RETURN ( term | )  ;
  
-
-
-
