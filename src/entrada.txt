@@ -8,5 +8,20 @@ int main() {
 int funcAux(int x, int p) {
     int a = 3;
     int b;
+    if(a > b || a == b )  {
+        a = b;
+    }
     return a;
 }
+
+
+
+
+int func;
+
+float aux(int x, int p);
+
+int x = 3;
+
+int x = 3, z = 4;
+
