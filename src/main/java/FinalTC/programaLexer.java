@@ -1,4 +1,4 @@
-// Generated from d:\Universidad\9no Cuatrimestre\Tecnicas de Compilacion\tp1\src\main\java\tp1\programa.g4 by ANTLR 4.9.2
+// Generated from c:\Users\Agux\Desktop\TC\FinalTC\src\main\java\FinalTC\programa.g4 by ANTLR 4.9.2
 
 package FinalTC;
 

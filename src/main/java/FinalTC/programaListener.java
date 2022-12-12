@@ -1,4 +1,4 @@
-// Generated from d:\Universidad\9no Cuatrimestre\Tecnicas de Compilacion\tp1\src\main\java\tp1\programa.g4 by ANTLR 4.9.2
+// Generated from c:\Users\Agux\Desktop\TC\FinalTC\src\main\java\FinalTC\programa.g4 by ANTLR 4.9.2
 
 package FinalTC;
 
@@ -9,6 +9,16 @@ import org.antlr.v4.runtime.tree.ParseTreeListener;
  * {@link programaParser}.
  */
 public interface programaListener extends ParseTreeListener {
+	/**
+	 * Enter a parse tree produced by {@link programaParser#verificador}.
+	 * @param ctx the parse tree
+	 */
+	void enterVerificador(programaParser.VerificadorContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link programaParser#verificador}.
+	 * @param ctx the parse tree
+	 */
+	void exitVerificador(programaParser.VerificadorContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link programaParser#programa}.
 	 * @param ctx the parse tree
@@ -49,16 +59,6 @@ public interface programaListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitInstruccion(programaParser.InstruccionContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link programaParser#verificador}.
-	 * @param ctx the parse tree
-	 */
-	void enterVerificador(programaParser.VerificadorContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link programaParser#verificador}.
-	 * @param ctx the parse tree
-	 */
-	void exitVerificador(programaParser.VerificadorContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link programaParser#declaracion}.
 	 * @param ctx the parse tree
@@ -250,15 +250,15 @@ public interface programaListener extends ParseTreeListener {
 	 */
 	void exitIfor(programaParser.IforContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link programaParser#una_o_mas_variables}.
+	 * Enter a parse tree produced by {@link programaParser#parametros_funcion}.
 	 * @param ctx the parse tree
 	 */
-	void enterUna_o_mas_variables(programaParser.Una_o_mas_variablesContext ctx);
+	void enterParametros_funcion(programaParser.Parametros_funcionContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link programaParser#una_o_mas_variables}.
+	 * Exit a parse tree produced by {@link programaParser#parametros_funcion}.
 	 * @param ctx the parse tree
 	 */
-	void exitUna_o_mas_variables(programaParser.Una_o_mas_variablesContext ctx);
+	void exitParametros_funcion(programaParser.Parametros_funcionContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link programaParser#tipo_de_funcion}.
 	 * @param ctx the parse tree
@@ -270,26 +270,6 @@ public interface programaListener extends ParseTreeListener {
 	 */
 	void exitTipo_de_funcion(programaParser.Tipo_de_funcionContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link programaParser#funcion}.
-	 * @param ctx the parse tree
-	 */
-	void enterFuncion(programaParser.FuncionContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link programaParser#funcion}.
-	 * @param ctx the parse tree
-	 */
-	void exitFuncion(programaParser.FuncionContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link programaParser#declaracion_funcion}.
-	 * @param ctx the parse tree
-	 */
-	void enterDeclaracion_funcion(programaParser.Declaracion_funcionContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link programaParser#declaracion_funcion}.
-	 * @param ctx the parse tree
-	 */
-	void exitDeclaracion_funcion(programaParser.Declaracion_funcionContext ctx);
-	/**
 	 * Enter a parse tree produced by {@link programaParser#definicion_funcion}.
 	 * @param ctx the parse tree
 	 */
@@ -300,25 +280,25 @@ public interface programaListener extends ParseTreeListener {
 	 */
 	void exitDefinicion_funcion(programaParser.Definicion_funcionContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link programaParser#param_declaracion}.
+	 * Enter a parse tree produced by {@link programaParser#argumentos_funcion}.
 	 * @param ctx the parse tree
 	 */
-	void enterParam_declaracion(programaParser.Param_declaracionContext ctx);
+	void enterArgumentos_funcion(programaParser.Argumentos_funcionContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link programaParser#param_declaracion}.
+	 * Exit a parse tree produced by {@link programaParser#argumentos_funcion}.
 	 * @param ctx the parse tree
 	 */
-	void exitParam_declaracion(programaParser.Param_declaracionContext ctx);
+	void exitArgumentos_funcion(programaParser.Argumentos_funcionContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link programaParser#param_definicion}.
+	 * Enter a parse tree produced by {@link programaParser#llamada_funcion}.
 	 * @param ctx the parse tree
 	 */
-	void enterParam_definicion(programaParser.Param_definicionContext ctx);
+	void enterLlamada_funcion(programaParser.Llamada_funcionContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link programaParser#param_definicion}.
+	 * Exit a parse tree produced by {@link programaParser#llamada_funcion}.
 	 * @param ctx the parse tree
 	 */
-	void exitParam_definicion(programaParser.Param_definicionContext ctx);
+	void exitLlamada_funcion(programaParser.Llamada_funcionContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link programaParser#finalizar_con_return}.
 	 * @param ctx the parse tree

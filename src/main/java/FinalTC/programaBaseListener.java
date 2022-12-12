@@ -1,4 +1,4 @@
-// Generated from d:\Universidad\9no Cuatrimestre\Tecnicas de Compilacion\tp1\src\main\java\tp1\programa.g4 by ANTLR 4.9.2
+// Generated from c:\Users\Agux\Desktop\TC\FinalTC\src\main\java\FinalTC\programa.g4 by ANTLR 4.9.2
 
 package FinalTC;
 
@@ -13,6 +13,18 @@ import org.antlr.v4.runtime.tree.TerminalNode;
  * of the available methods.
  */
 public class programaBaseListener implements programaListener {
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterVerificador(programaParser.VerificadorContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitVerificador(programaParser.VerificadorContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -61,18 +73,6 @@ public class programaBaseListener implements programaListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitInstruccion(programaParser.InstruccionContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterVerificador(programaParser.VerificadorContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitVerificador(programaParser.VerificadorContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -306,13 +306,13 @@ public class programaBaseListener implements programaListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterUna_o_mas_variables(programaParser.Una_o_mas_variablesContext ctx) { }
+	@Override public void enterParametros_funcion(programaParser.Parametros_funcionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitUna_o_mas_variables(programaParser.Una_o_mas_variablesContext ctx) { }
+	@Override public void exitParametros_funcion(programaParser.Parametros_funcionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -330,30 +330,6 @@ public class programaBaseListener implements programaListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterFuncion(programaParser.FuncionContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitFuncion(programaParser.FuncionContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterDeclaracion_funcion(programaParser.Declaracion_funcionContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitDeclaracion_funcion(programaParser.Declaracion_funcionContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
 	@Override public void enterDefinicion_funcion(programaParser.Definicion_funcionContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -366,25 +342,25 @@ public class programaBaseListener implements programaListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterParam_declaracion(programaParser.Param_declaracionContext ctx) { }
+	@Override public void enterArgumentos_funcion(programaParser.Argumentos_funcionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitParam_declaracion(programaParser.Param_declaracionContext ctx) { }
+	@Override public void exitArgumentos_funcion(programaParser.Argumentos_funcionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterParam_definicion(programaParser.Param_definicionContext ctx) { }
+	@Override public void enterLlamada_funcion(programaParser.Llamada_funcionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitParam_definicion(programaParser.Param_definicionContext ctx) { }
+	@Override public void exitLlamada_funcion(programaParser.Llamada_funcionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

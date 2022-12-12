@@ -1,5 +1,3 @@
-int funcAux(int x, int p);
-
 int main() {
     int z = 3;
     return 0;
@@ -15,13 +13,12 @@ int funcAux(int x, int p) {
 }
 
 
-
-
 int func;
 
-float aux(int x, int p);
 
 int x = 3;
 
 int x = 3, z = 4;
+
+int z;
 

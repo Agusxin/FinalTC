@@ -1,4 +1,4 @@
-// Generated from d:\Universidad\9no Cuatrimestre\Tecnicas de Compilacion\tp1\src\main\java\tp1\programa.g4 by ANTLR 4.9.2
+// Generated from c:\Users\Agux\Desktop\TC\FinalTC\src\main\java\FinalTC\programa.g4 by ANTLR 4.9.2
 
 package FinalTC;
 
@@ -12,6 +12,12 @@ import org.antlr.v4.runtime.tree.ParseTreeVisitor;
  * operations with no return type.
  */
 public interface programaVisitor<T> extends ParseTreeVisitor<T> {
+	/**
+	 * Visit a parse tree produced by {@link programaParser#verificador}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitVerificador(programaParser.VerificadorContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link programaParser#programa}.
 	 * @param ctx the parse tree
@@ -36,12 +42,6 @@ public interface programaVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitInstruccion(programaParser.InstruccionContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link programaParser#verificador}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitVerificador(programaParser.VerificadorContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link programaParser#declaracion}.
 	 * @param ctx the parse tree
@@ -157,11 +157,11 @@ public interface programaVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitIfor(programaParser.IforContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link programaParser#una_o_mas_variables}.
+	 * Visit a parse tree produced by {@link programaParser#parametros_funcion}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitUna_o_mas_variables(programaParser.Una_o_mas_variablesContext ctx);
+	T visitParametros_funcion(programaParser.Parametros_funcionContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link programaParser#tipo_de_funcion}.
 	 * @param ctx the parse tree
@@ -169,35 +169,23 @@ public interface programaVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitTipo_de_funcion(programaParser.Tipo_de_funcionContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link programaParser#funcion}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitFuncion(programaParser.FuncionContext ctx);
-	/**
-	 * Visit a parse tree produced by {@link programaParser#declaracion_funcion}.
-	 * @param ctx the parse tree
-	 * @return the visitor result
-	 */
-	T visitDeclaracion_funcion(programaParser.Declaracion_funcionContext ctx);
-	/**
 	 * Visit a parse tree produced by {@link programaParser#definicion_funcion}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
 	T visitDefinicion_funcion(programaParser.Definicion_funcionContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link programaParser#param_declaracion}.
+	 * Visit a parse tree produced by {@link programaParser#argumentos_funcion}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitParam_declaracion(programaParser.Param_declaracionContext ctx);
+	T visitArgumentos_funcion(programaParser.Argumentos_funcionContext ctx);
 	/**
-	 * Visit a parse tree produced by {@link programaParser#param_definicion}.
+	 * Visit a parse tree produced by {@link programaParser#llamada_funcion}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitParam_definicion(programaParser.Param_definicionContext ctx);
+	T visitLlamada_funcion(programaParser.Llamada_funcionContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link programaParser#finalizar_con_return}.
 	 * @param ctx the parse tree

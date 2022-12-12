@@ -1,7 +1,7 @@
 grammar programa;
 
 @header {
-package tp1;
+package FinalTC;
 }
 
 fragment LETRA : [A-Za-z] ;
@@ -49,11 +49,12 @@ RETURN : 'return' ;
 
 ENTERO : DIGITO+ ;
 
-ID : (LETRA | '_')(LETRA | DIGITO | '_')* ;
+ID : (LETRA | '_')(LETRA | DIGITO | '_') * ;
 
 
 WS : [ \n\t\r]+ -> skip;
 
+verificador: ID | ENTERO;
 
 programa :  instrucciones;
 
@@ -72,29 +73,27 @@ instruccion : declaracion PYC
             | iwhile
             | iif
             | ifor
-            | funcion PYC
-            | declaracion_funcion PYC
             | definicion_funcion
+            | llamada_funcion PYC
             | finalizar_con_return PYC
             ;
 
-verificador : ID | ENTERO ;
-
 
 /*  INICIO DECLARACION  */
-declaracion :  tipo_de_datos asignacion_simple;
+declaracion :  tipo_de_datos ID asignacion_simple;
+           
 
 tipo_de_datos : INT 
               | DOUBLE 
               | FLOAT
               ;
+ 
 
-asignacion_simple : ID ASIG verificador
-                  | ID ASIG verificador COMA asignacion_simple
-                  | ID
-                  | ID COMA asignacion_simple
-
+asignacion_simple : ASIG verificador asignacion_simple
+                  | COMA ID asignacion_simple
+                  |
                   ;
+
 
 /* FIN DECLARACION */
 
@@ -122,6 +121,7 @@ factor : ID
        | PARENA exp PARENC
        ;
 
+
 /* FIN ASIGNACION */
 
 
@@ -139,8 +139,8 @@ comparacion : MAYOR
             | DISTINTO 
             ;
 
-comp : verificador logico_comp comp
-     | verificador
+comp : ID logico_comp comp
+     | ID
      ;
 
   
@@ -154,10 +154,10 @@ bloque_estructuras_de_control : verificador comparacion verificador bloque_estru
                               |
                               ; 
 
-pos_pre_incremento : verificador MAS MAS 
-                   | verificador MENOS MENOS
-                   | MAS MAS verificador
-                   | MENOS MENOS verificador
+pos_pre_incremento : ID MAS MAS 
+                   | ID MENOS MENOS
+                   | MAS MAS ID
+                   | MENOS MENOS ID
                    ;
 
 
@@ -178,33 +178,28 @@ ifor : IFOR bloque_for bloque ;
 /* INICIO ACEPTAR FUNCIONES Y LLAMADAS DE FUNCIONES */
 
 
-una_o_mas_variables : declaracion una_o_mas_variables
-                    | declaracion
+parametros_funcion : tipo_de_datos ID parametros_funcion
+                    | COMA parametros_funcion
                     |
                     ; 
 
-tipo_de_funcion : VOID ;
+tipo_de_funcion : VOID | tipo_de_datos ;
 
-funcion : tipo_de_datos ID PARENA una_o_mas_variables PARENC
-        | ID PARENA PARENC
-        ;
+                   
+definicion_funcion: tipo_de_funcion ID PARENA parametros_funcion PARENC bloque;
 
 
-declaracion_funcion : tipo_de_datos ID PARENA param_declaracion PARENC;
-                    
-definicion_funcion: tipo_de_datos ID PARENA param_definicion PARENC bloque;
-
-param_declaracion : tipo_de_datos(ID | )
-		              | tipo_de_datos (ID | ) COMA param_declaracion
+argumentos_funcion: ID argumentos_funcion
+                  | COMA argumentos_funcion
                   |
-		              ;
+                  ;
 
-param_definicion : tipo_de_datos ID
-		             | tipo_de_datos ID COMA param_definicion
-                 |
-	            	 ; 
+llamada_funcion: ID PARENA argumentos_funcion PARENC;
+                  
+                  
 
 /* FIN ACEPTAR FUNCIONES Y LLAMADAS DE FUNCIONES */
-
+ 
 finalizar_con_return : RETURN ( term | )  ;
+  
  

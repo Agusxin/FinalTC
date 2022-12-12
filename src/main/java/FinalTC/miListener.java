@@ -3,7 +3,14 @@ package FinalTC;
 import java.util.LinkedList;
 
 import FinalTC.TablaSimbolos.*;
+import FinalTC.programaParser.AsignacionContext;
+import FinalTC.programaParser.Asignacion_simpleContext;
+import FinalTC.programaParser.BloqueContext;
 import FinalTC.programaParser.DeclaracionContext;
+import FinalTC.programaParser.Definicion_funcionContext;
+import FinalTC.programaParser.FactorContext;
+import FinalTC.programaParser.Llamada_funcionContext;
+import FinalTC.programaParser.Parametros_funcionContext;
 import FinalTC.programaParser.ProgramaContext;
 
 
@@ -12,8 +19,6 @@ public class miListener extends programaBaseListener {
     private TablaSimbolos simbolTable;
     private LinkedList<ID> functionParams;
    
-    programaParser parser;
-
     public miListener() {
         simbolTable = TablaSimbolos.getInstance();
         functionParams = new LinkedList<ID>();
@@ -21,7 +26,14 @@ public class miListener extends programaBaseListener {
 
     @Override
     public void enterPrograma(ProgramaContext ctx) {
-        System.out.println("\n[Inicio del análisis de las variables usadas y declaradas]\n");
+        System.out.println("\n[Inicio del análisis de las IDs usadas y declaradas]\n");
+    }
+
+    
+    @Override
+    public void enterBloque(BloqueContext ctx) {
+        System.out.print("[Inicio de Bloque]\n");
+        this.simbolTable.addContext();
     }
 
     
@@ -29,193 +41,111 @@ public class miListener extends programaBaseListener {
     public void exitDeclaracion(DeclaracionContext ctx) {
         
         String tipo = ctx.tipo_de_datos().getText();
-        String nombre = ctx.asignacion_simple().ID().getText();
+        String nombre = ctx.ID().getText();
         ID searchID = new ID(tipo, nombre);
-        
+
         if(this.simbolTable.searchId(searchID) != null  ){
             ErrorListener.printError(ctx.getStop().getLine(), "Doble declaración de: [" + tipo + " " + nombre + "]");
+        } 
+        
+        
+
+        Asignacion_simpleContext verificarChilds = ctx.asignacion_simple();
+
+
+        if(verificarChilds.getChildCount() == 0){
+            ID id = new ID(nombre, tipo, true);
+            simbolTable.addId(id);
         }
 
+
+        while(verificarChilds.getChildCount() != 0){
+             
+            if(verificarChilds.getChild(0).getText().equals("=")){
+                ID id = new ID(nombre, tipo, true);
+                simbolTable.addId(id);
+            }
+            if(verificarChilds.getChild(0).getText().equals(",")){
+                ID id = new ID(nombre, tipo, false);
+                simbolTable.addId(id);
+            }
+            verificarChilds = verificarChilds.asignacion_simple();
+        }
         
     }
 
+    @Override
+    public void exitAsignacion(AsignacionContext ctx) {
     
+        ID searchID = new ID(ctx.ID().getText(), "");
+
+        if( this.simbolTable.searchId(searchID) == null ){
+            ErrorListener.printError(ctx.getStop().getLine(), "Uso de ID no declarado: [" + searchID.getNombre() + "]");
+            return;
+        }
+
+        searchID.setInicializada(true);
+    }
 
 
-    
-    
-
-
-
-
-
-
-
-    /* 
-    @Override 
-    public void enterBloque( programaParser.BloqueContext ctx) { 
-        if (ctx.getParent().getClass().equals( programaParser.Definicion_funcionContext.class)) {
-             programaParser.Definicion_funcionContext fnctx = ( programaParser.Definicion_funcionContext) ctx.getParent();
-            Funcion funcion = DataFuncion.getDataFuncion(fnctx);
-
-            if (!this.simbolTable.isVariableDeclared(funcion)){
-                this.simbolTable.addFuncion(funcion);
+    @Override
+    public void exitParametros_funcion(Parametros_funcionContext ctx) {
+        if(ctx.getChildCount() != 0){
+            if(ctx.ID() != null){
+                ID id = new ID(ctx.ID().getText(), ctx.tipo_de_datos().getText(), true);
+                this.functionParams.add(id);
             }
-            this.simbolTable.addContext();
+        }
+    }
+
+
+    @Override
+    public void exitDefinicion_funcion(Definicion_funcionContext ctx) {
+         
+        ID searchID = new ID(ctx.ID().getText(), ctx.tipo_de_funcion().getText());
+
+        if(this.simbolTable.searchId(searchID) != null){
             
-            if (fnctx.param_definicion().getChildCount() != 0) {
-                for (ID param : funcion.getParametros()) {
-                    this.simbolTable.addId(param);
-                }
-            }
+            ErrorListener.printError(ctx.getStop().getLine(), "Doble declaración de función: [" + searchID.getTipo() + " " + searchID.getNombre() + "]");
+            return;
         }
-        else {
-            this.simbolTable.addContext();
-        }
+
+        Funcion funcion = new Funcion(searchID.getTipo(), searchID.getNombre(), functionParams);
+        this.simbolTable.addId(funcion);
+        this.functionParams.clear();
     }
 
-    
-    @Override 
-    public void exitBloque( programaParser.BloqueContext ctx) {
-        this.simbolTable.removeContext();
-    }
 
-    @Override 
-    public void exitDeclaracion(programaParser.DeclaracionContext ctx) {
-       programaParser.Asignacion_simpleContext lista = ctx.asignacion_simple();
-       while (lista != null) {
-           if (lista.asignacion_simple() == null) {
-               ID id = new Variable(lista.ID().getText(), ctx.tipo_de_datos().getText());
-               if (!this.simbolTable.isVariableDeclared(id)) {
-                   this.simbolTable.addId(id);
-               }
-               else {
-                   ErrorListener.printError(ctx.getStop().getLine(), "Variable duplicada");
-               }
-           }
-           lista = lista.asignacion_simple();
+    @Override
+    public void exitLlamada_funcion(Llamada_funcionContext ctx) {
+       ID searchID = new ID(ctx.ID().getText(), "");
+       ID searched = this.simbolTable.searchId(searchID);
+       if(searched == null){
+        ErrorListener.printError(ctx.getStop().getLine(), "Uso de Función no declarada: [" + searchID.getNombre() + "]");
+        return;
+       }else{
+          searched.setUsado(true);
        }
     }
 
-
     @Override
-         public void exitAsignacion( programaParser.AsignacionContext ctx){
-        ID variable = this.simbolTable.searchVariable(ctx.ID().getText());
-        int linea = ctx.getStart().getLine(); // el numero de linea es para el parser error
+    public void exitFactor(FactorContext ctx) {
+        
+        if(ctx.ID() != null){
+            ID searchID = new ID(ctx.ID().getText(), "");
+            ID searched = this.simbolTable.searchId(searchID);
 
-        if (ctx.getParent().getClass().equals( programaParser.AsignacionContext.class)) {
-             programaParser.AsignacionContext lista = ( programaParser.AsignacionContext) ctx.getParent();
-            
-            while(lista.getParent().getClass().equals( programaParser.AsignacionContext.class)) {
-                lista = ( programaParser.AsignacionContext) lista.getParent();
-            }
-
-            if (lista.getParent().getClass().equals( programaParser.DeclaracionContext.class)) {
-                String nombreVariable = ctx.ID().getText();
-                String tipoVariable = (( programaParser.DeclaracionContext) lista.getParent()).tipo_de_datos().getText();
-                variable = new Variable(nombreVariable, tipoVariable);
-                
-                if (!this.simbolTable.isVariableDeclared(variable)) {
-                    this.simbolTable.addId(variable);
-                }
-                else {
-                    //Variable duplicada
-                    ErrorListener.printError(linea, "Se encontro una variable duplicada "+ variable.getNombre());
-                }
-            }    
-        }
-        else if (this.simbolTable.isVariableDeclared(ctx.ID().getText())) {
-            this.simbolTable.setUsedId(ctx.ID().getText());
-            
-        }
-        else {
-            //Variable no declarada
-            ErrorListener.printError(ctx.getStop().getLine(), " La variables --> "+ ctx.ID().getText() +" no esta declarado");
-        }
-    }
-  
-    @Override 
-    public void exitDeclaracion_funcion(programaParser.Declaracion_funcionContext ctx) {
-        Funcion funcion = null;
-
-        if (ctx.tipo_de_datos() != null)
-            funcion = new Funcion(ctx.tipo_de_datos().getText(), ctx.ID().getText());
-    
-
-        LinkedList<ID> paramFuncion = new LinkedList<ID>();
-
-        if (DataFuncion.validarFuncion(funcion, ctx)) {
-            if(!ctx.param_declaracion().isEmpty()) {
-                this.simbolTable.addParamForContext();
-                paramFuncion = DataFuncion.getParametros(ctx.param_declaracion(), paramFuncion);
-                
-                for (ID id : paramFuncion) {
-                    if (id.getNombre() != "") {
-                        if (this.simbolTable.isVariableDeclared(id)) {
-                            //parser de error --> variable ya declarada
-                            ErrorListener.printError(ctx.getStop().getLine(), "La variable "+ id.getNombre() +" ya ha sido declarada");
-                        }
-                        this.simbolTable.addParamFuncion(id);
-                    }
-                }
-                this.simbolTable.removeContext();
-            }
-            funcion.setParametros(paramFuncion);
-            this.simbolTable.addFuncion(funcion);
-        }
-    }
-
-    @Override 
-    public void exitDefinicion_funcion(programaParser.Definicion_funcionContext ctx) { 
-        if (!ctx.ID().getText().equals("main")){
-            if (ctx.bloque().instrucciones() != null) {
-                programaParser.InstruccionesContext inst = ctx.bloque().instrucciones();
-                while(inst != null) {
-                    if (inst.instruccion() != null){
-                        if(inst.instruccion().finalizar_con_return() != null) {
-                            // encontre retorno
-                            if (ctx.tipo_de_datos() != null) {
-                                if(inst.instruccion().finalizar_con_return().term() == null ) {
-                                    // parser de error --> falta valor de return
-                                    ErrorListener.printError(ctx.getStop().getLine(), " Debe retornar un valor");
-                                    return;
-                                }
-                            }
-                            else if(inst.instruccion().finalizar_con_return().term() != null) {
-                                // parser de error --> return con operacion en funcion void
-                                ErrorListener.printError(ctx.getStop().getLine(), "la función void no debe devolver un valor!");
-                            }
-                            return;
-                        }
-                    }
-                    inst = inst.instrucciones();
-                }
-                // si no tiene return valido que tipo funcion sea void
-                if (!ctx.tipo_de_datos().getText().equals("void")){
-                    //parser de error
-                    ErrorListener.printError(ctx.getStop().getLine(), "Debe retornar un valor");
-                    return ;   
-                }
+            if(searched  == null){
+                ErrorListener.printError(ctx.getStop().getLine(), "Uso de ID no declarado: [" + searchID.getNombre() + "]");
+            }else{
+               if(!searched.isInicializada()){
+                ErrorListener.printError(ctx.getStop().getLine(), "Uso de ID no inicializado: [" + searchID.getNombre() + "]");
+               }else{
+                 searched.setUsado(true);
+               }
             }
         }
+        return;
     }
 
-
-    @Override
-    public void exitPuntocoma(programaParser.PuntocomaContext ctx) {
-        if (ctx.PYQ() != null) {
-            if (!ctx.PYQ().getText().equals(";")) {
-                ErrorListener.printError(ctx.getStop().getLine(),"Falta punto y coma");
-            }
-        }
-    }
-
-   @Override
-   public void exitPrograma(programaParser.ProgramaContext ctx){
-       this.simbolTable.removeContext();
-       this.simbolTable.printTable();
-       this.toString();
-   }
-
-*/
 }
