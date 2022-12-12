@@ -61,24 +61,26 @@ public class TablaSimbolos {
     public String toString() {
         int ctx = 1;
         String salida = "";
-        salida.concat("\n------TABLA DE SIMBOLOS------\n");
+        salida = salida.concat("\n------TABLA DE SIMBOLOS------\n");
+         
         for (HashMap<String, ID> contexto : this.tablaSimbolos) {
-            salida.concat("Contexto: " + ctx++ + " {");
+            salida = salida.concat("Contexto: " + ctx++ + "\n {\n");
             for (ID id : contexto.values()) {
-                salida.concat("    " + id.toString());
+                salida = salida.concat("    " + id.toString() + "\n");
             }
             salida.concat("}\n");
         }
 
         ctx = 1;
-        salida.concat("\n------HISTORIAL------\n");
+        salida = salida.concat("\n------HISTORIAL------\n");
         for (HashMap<String, ID> contexto : this.historialTablaSimbolos) {
-            salida.concat("Contexto: " + ctx++ + " {");
+            salida = salida.concat("Contexto: " + ctx++ + "\n {\n");
             for (ID id : contexto.values()) {
-                salida.concat("    " + id.toString());
+                salida = salida.concat("    " + id.toString() + "\n");
             }
-            salida.concat("}");
+            salida = salida.concat("}");
         }  
+        
         return salida;      
     }
 }

@@ -10,6 +10,8 @@ public class Funcion extends ID {
     public Funcion(String tipo, String nombre, LinkedList<ID> parametros) {
         super.setTipo(tipo);
         super.setNombre(nombre);
+        super.setInicializada(true);
+        super.setUsado(false);
         this.parametros = parametros;
     }
 

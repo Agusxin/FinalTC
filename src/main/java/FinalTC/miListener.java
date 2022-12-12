@@ -148,4 +148,9 @@ public class miListener extends programaBaseListener {
         return;
     }
 
+    @Override
+    public void exitPrograma(ProgramaContext ctx) {
+        System.out.println(this.simbolTable.toString());
+    }
+
 }
